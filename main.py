@@ -7,7 +7,7 @@ import joblib
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
-# Load or train the model, scaler, and label encoder
+
 try:
     # Attempt to load existing files
     scaler = joblib.load('scaler.pkl')
@@ -80,10 +80,8 @@ def predict_crop(n, p, k, temperature, humidity, ph, rainfall):
 
 # Streamlit app
 def main():
-    # Title of the app
+ 
     st.title("Crop Recommendation System")
-
-    # Input fields for the user
     st.header("Enter the following parameters:")
     n = st.number_input("Nitrogen content (N)", min_value=0.0, max_value=300.0, step=1.0)
     p = st.number_input("Phosphorus content (P)", min_value=0.0, max_value=300.0, step=1.0)
@@ -93,7 +91,7 @@ def main():
     ph = st.number_input("Soil pH", min_value=0.0, max_value=14.0, step=0.1)
     rainfall = st.number_input("Rainfall (mm)", min_value=0.0, max_value=500.0, step=1.0)
 
-    # Button for prediction
+ 
     if st.button("Predict Crop"):
         predicted_crop = predict_crop(n, p, k, temperature, humidity, ph, rainfall)
         st.success(f"Predicted Crop: {predicted_crop}")
